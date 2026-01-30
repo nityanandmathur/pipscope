@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "pip-tui"
+name = "pipscope"
 version = "0.1.0"
 description = "Interactive TUI for exploring installed Python packages"
 readme = "README.md"
@@ -32,8 +32,8 @@ dependencies = [
 ]
 
 [project.scripts]
-pip-tui = "pip_tui:main"
+pipscope = "pipscope:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/pip-tui"
-Repository = "https://github.com/yourusername/pip-tui"
+Homepage = "https://github.com/yourusername/pipscope"
+Repository = "https://github.com/yourusername/pipscope"

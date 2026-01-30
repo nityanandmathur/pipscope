@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-pip-tui: Interactive TUI for exploring installed Python packages.
+pipscope: Interactive TUI for exploring installed Python packages.
 
 A fast, keyboard-driven terminal interface for browsing installed Python packages,
 viewing their details, dependencies, and reverse dependencies.
 
 Usage:
-    python pip_tui.py
-    pip-tui  (if installed via pip)
+    python pipscope.py
+    pipscope  (if installed via pip)
 """
 
 from __future__ import annotations
@@ -229,7 +229,7 @@ class SearchInput(Input):
 # -----------------------------------------------------------------------------
 
 
-class PipTUI(App):
+class PipScope(App):
     """Interactive TUI for exploring installed Python packages."""
     
     CSS = """
@@ -370,7 +370,7 @@ class PipTUI(App):
         Binding("e", "export_json", "Export", show=False),
     ]
     
-    TITLE = "pip-tui"
+    TITLE = "pipscope"
     
     sort_mode: reactive[str] = reactive("name")
     
@@ -384,7 +384,7 @@ class PipTUI(App):
     def compose(self) -> ComposeResult:
         # Header with title and search
         with Horizontal(id="header"):
-            yield Static("pip-tui", id="header-title")
+            yield Static("pipscope", id="header-title")
             yield SearchInput(id="search-box")
         
         # Main content
@@ -557,7 +557,7 @@ class PipTUI(App):
 
 def main() -> None:
     """Entry point for the application."""
-    app = PipTUI()
+    app = PipScope()
     app.run()
 
 

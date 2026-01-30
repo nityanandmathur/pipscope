@@ -1,4 +1,4 @@
-# pip-tui
+# pipscope
 
 A fast, interactive terminal UI for exploring installed Python packages. Think `htop` for `pip`.
 
@@ -19,8 +19,8 @@ A fast, interactive terminal UI for exploring installed Python packages. Think `
 
 ```bash
 # Clone and install
-git clone https://github.com/yourusername/pip-tui.git
-cd pip-tui
+git clone https://github.com/yourusername/pipscope.git
+cd pipscope
 pip install .
 
 # Or install in development mode
@@ -31,10 +31,10 @@ pip install -e .
 
 ```bash
 # If installed via pip
-pip-tui
+pipscope
 
 # Or run directly
-python pip_tui.py
+python pipscope.py
 ```
 
 ## Keyboard Controls
