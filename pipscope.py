@@ -18,6 +18,9 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from importlib.metadata import distributions
 
+from services.health import analyze_environment
+from services.req_exporter import export_requirements
+
 from textual import on
 from textual.app import App, ComposeResult
 from textual.binding import Binding
@@ -26,6 +29,7 @@ from textual.message import Message
 from textual.reactive import reactive
 from textual.widgets import Input, ListItem, ListView, Static
 
+from ui.health_screen import HealthScreen
 
 # -----------------------------------------------------------------------------
 # Data Model
@@ -368,6 +372,8 @@ class PipScope(App):
         Binding("escape", "escape_action", "Back", show=False),
         Binding("s", "toggle_sort", "Sort", show=False),
         Binding("e", "export_json", "Export", show=False),
+        Binding("r", "export_requirements", "requirements.txt", show=False),
+        Binding("h", "show_health", "Health", show=False),
     ]
     
     TITLE = "pipscope"
@@ -407,7 +413,9 @@ class PipScope(App):
             "[#5e6ad2]j/k[/] [#6e6e80]Navigate[/]  "
             "[#5e6ad2]s[/] [#6e6e80]Sort[/]  "
             "[#5e6ad2]e[/] [#6e6e80]Export[/]  "
-            "[#5e6ad2]q[/] [#6e6e80]Quit[/]",
+            "[#5e6ad2]q[/] [#6e6e80]Quit[/]  "
+            "[#5e6ad2]h[/] [#6e6e80]Health[/]  "
+            "[#5e6ad2]r[/] [#6e6e80]Health[/]  ",
             id="footer"
         )
     
@@ -527,7 +535,6 @@ class PipScope(App):
         self._apply_filter()
         
         self.notify(f"Sorted by {self.sort_mode}", timeout=1.5)
-    
     def action_export_json(self) -> None:
         """Export all packages to JSON file."""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -554,6 +561,18 @@ class PipScope(App):
         except Exception as e:
             self.notify(f"Export failed: {e}", severity="error", timeout=3)
 
+    def action_show_health(self) -> None:
+        """Analyze and show environment health summary."""
+        self.push_screen(HealthScreen(self._all_packages))
+
+    def action_export_requirements(self) -> None:
+        """Export packages to requirements.txt."""
+        try:
+            export_requirements(self._all_packages)
+            self.notify(f"Exported to requirements.txt", timeout=2)
+        except Exception as e:
+            self.notify(f"Export failed: {e}", severity="error", timeout=3)
+            pass
 
 def main() -> None:
     """Entry point for the application."""
