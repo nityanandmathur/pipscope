@@ -4,13 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pipscope"
-version = "0.1.0"
+version = "0.1.1"
 description = "Interactive TUI for exploring installed Python packages"
 readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"
 authors = [
-    { name = "Your Name", email = "you@example.com" }
+    { name = "Nityanand Mathur", email = "nityanandmathur@gmail.com" },
+    { name = "Ankit Bari", email = "vbari8527@gmail.com" }
 ]
 keywords = ["pip", "tui", "packages", "terminal", "textual"]
 classifiers = [
@@ -35,5 +36,5 @@ dependencies = [
 pipscope = "pipscope:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/pipscope"
-Repository = "https://github.com/yourusername/pipscope"
+Homepage = "https://pypi.org/project/pipscope"
+Repository = "https://github.com/nityanandmathur/pipscope"

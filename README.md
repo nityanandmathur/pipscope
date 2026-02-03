@@ -47,6 +47,8 @@ python pipscope.py
 | `Esc` | Clear search, return to list |
 | `s` | Toggle sort: name / version |
 | `e` | Export packages to JSON |
+| `h` | Show Environment Health |
+| `r` | Export requirements.txt |
 | `q` | Quit |
 
 ## Interface
