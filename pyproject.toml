@@ -38,3 +38,6 @@ pipscope = "pipscope:main"
 [project.urls]
 Homepage = "https://pypi.org/project/pipscope"
 Repository = "https://github.com/nityanandmathur/pipscope"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pipscope.py", "core.py", "services", "ui"]
